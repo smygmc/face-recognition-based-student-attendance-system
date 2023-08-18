@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{%block title %}Admin Dashboard{%endblock%}
+{%block content%}
+
+<h1 align="center">Admin Dashboard</h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar">
+        <div class="navbar-nav">
+
+
+          <a class="nav-item nav-link" id="users" href="/admin-board/users">Users</a>
+
+          <a class="nav-item nav-link" id="courses" href="/admin-board/courses">Courses</a>
+<a class="nav-item nav-link" id="index" href="/index">Face-Rec Cam</a>
+            <a class="nav-item nav-link" id="attendance" href="/admin-attendance">Attendants Table</a>
+
+        </div>
+      </div>
+    </nav>
+
+    <table class="table">
+			<tr>
+				<th>Course Title</th>
+                <th>Course ID</th>
+                <th>ID</th>
+                <th>Course Day</th>
+                <th>Course Start Time</th>
+                <th>Course End Time</th>
+
+
+
+
+			</tr>
+    {% for course in courses %}
+    <tr>
+				<td>{{ course.course_title }}</td>
+
+                <td>{{ course.course_id }}</td>
+                        <td>{{ course.id }}</td>
+
+        <td>{{ course.weekday_string }}</td>
+        <td>{{ course.start_time}}</td>
+        <td>{{ course.end_time }}</td>
+
+
+    </tr>
+    {%endfor%}
+    </table>
+
+ {%endblock%}

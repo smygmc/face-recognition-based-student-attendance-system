@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{%block title %}Teacher Notes{%endblock%}
+{%block content%}
+<!--<a class="nav-item nav-link" id="index" href="/index">video</a>-->
+<h1 align="center">Teacher Notes</h1>
+  <h2>Hi, {{user.first_name}}</h2>
+
+<h4>Your Courses</h4>
+ <ul class="list-group list-group-flush" id="courses">
+
+    {% for course in courses %}
+    <li class="list-group-item">
+        {{course.course_title}}
+   <form method="POST" action="/attendance-teacher">
+        <input type="submit" value="See Attendance" name="action1"/>
+   </form>
+    </li>
+    {%endfor%}
+     </ul>
+<br/>
+  <h4>Your notes</h4>
+<ul class="list-group list-group-flush" id="notes">
+
+    {% for note in user.notes %}
+    <li class="list-group-item">
+        {{note.data}}
+    <button type="button" class="close" onClick="deleteNote({{note.id}})">
+        <span aria-hidden="true">&times;</span>
+    </button></li>
+    {%endfor%}
+</ul>
+<form method="POST">
+    <textarea name="note" id="note" class="form-control"></textarea>
+<br/>
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Add Note</button>
+   </div>
+</form>
+
+
+ {%endblock%}

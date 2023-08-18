@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{%block title %}Student Notes{%endblock%}
+{%block content%}
+<br/>
+  <h2>Hi, {{user.first_name}}</h2>
+
+<h4>Your Courses</h4>
+<table class="table">
+			<tr>
+				<th>Course Title</th>
+                <th>Course Day</th>
+                <th>Course Start Time</th>
+                <th>Course End Time</th>
+
+
+
+
+			</tr>
+    {% for course in courses %}
+    <tr>
+				<td>{{ course.course_title }}</td>
+        <td>{{ course.weekday_string }}</td>
+        <td>{{ course.start_time}}</td>
+        <td>{{ course.end_time }}</td>
+
+
+    </tr>
+    {%endfor%}
+    </table>
+
+
+ {%endblock%}
